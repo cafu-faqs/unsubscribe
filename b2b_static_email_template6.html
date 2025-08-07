@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fuel Smarter with CAFU</title>
+  <style>
+    /* RESET STYLES */
+    body, table, td, p, a, li, blockquote {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    table, td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+      border-collapse: collapse !important;
+    }
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      max-width: 100%;
+    }
+    
+    /* BASE STYLES */
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333333;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .header {
+      text-align: center;
+      padding: 16px 10px;
+      background: #ffffff;
+      border-bottom: 1px solid #edf2f7;
+    }
+    .header img {
+      height: auto;
+      max-height: 20px;
+    }
+    .nav {
+      background: #f8f9fa;
+      padding: 16px 0;
+      border-bottom: 1px solid #edf2f7;
+    }
+    .nav-item {
+      display: table-cell;
+      text-align: center;
+      padding: 0 8px;
+    }
+    .nav a {
+      color: #2d3748;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+      display: block;
+      padding: 12px 16px;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+    .nav a:hover {
+      color: #4EBCCA;
+      background-color: rgba(78, 188, 202, 0.08);
+    }
+    .hero {
+      background-color: #ffffff;
+      padding: 0;
+    }
+    .hero img {
+      width: 100%;
+      display: block;
+      border-radius: 0;
+    }
+    .section {
+      padding: 48px 40px;
+      text-align: center;
+      background-color: #ffffff;
+      position: relative;
+    }
+    .section-alt {
+      background: #f8f9fa;
+      border-left: none;
+      margin: 0;
+      position: relative;
+    }
+    .section-alt::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 60%;
+      background: #4EBCCA;
+      border-radius: 0 2px 2px 0;
+    }
+    .section h2 {
+      color: #1a202c;
+      font-size: 32px;
+      margin: 0 0 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+    .section h2 span {
+      color: #C9A52B;
+    }
+    .section p {
+      color: #4a5568;
+      line-height: 1.8;
+      margin: 0 0 24px;
+      font-size: 16px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .highlight {
+      color: #4EBCCA;
+      font-weight: 700;
+      background: rgba(78, 188, 202, 0.08);
+      padding: 4px 12px;
+      border-radius: 6px;
+      display: inline-block;
+    }
+    .feature-grid {
+      display: table;
+      width: 100%;
+      margin: 32px 0;
+      border-spacing: 16px;
+    }
+    .feature-item {
+      display: table-cell;
+      width: 25%;
+      padding: 24px 16px;
+      background: #f8f9fa;
+      border-radius: 12px;
+      vertical-align: top;
+    }
+    .feature-item img {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+    }
+    .feature-item h3 {
+      font-size: 18px;
+      color: #2d3748;
+      margin: 0 0 8px;
+      font-weight: 600;
+    }
+    .feature-item p {
+      font-size: 14px;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .cta-btn {
+      background: #4EBCCA;
+      color: #ffffff !important;
+      padding: 16px 32px;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 24px;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px rgba(78, 188, 202, 0.15);
+    }
+    .cta-btn:hover {
+      background: #3da8b6;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba(78, 188, 202, 0.2);
+    }
+    .footer {
+      background: #f8f9fa;
+      padding: 48px 20px;
+      text-align: center;
+      border-top: 1px solid #edf2f7;
+    }
+    .social-icons {
+      padding: 0 0 24px;
+    }
+    .social-icons a {
+      display: inline-block;
+      margin: 0 8px;
+      transition: transform 0.2s ease;
+    }
+    .social-icons img {
+      height: 24px;
+      width: auto;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+    .social-icons a:hover {
+      transform: translateY(-2px);
+    }
+    .social-icons img:hover {
+      opacity: 1;
+    }
+    .footer p {
+      font-size: 14px;
+      color: #718096;
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+    .footer a {
+      color: #4EBCCA;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+    .footer a:hover {
+      color: #3da8b6;
+      text-decoration: underline;
+    }
+    
+    /* UTILITY CLASSES */
+    .text-center { text-align: center; }
+    .mb-0 { margin-bottom: 0 !important; }
+    .mb-10 { margin-bottom: 10px !important; }
+    .mb-20 { margin-bottom: 20px !important; }
+    .strong {
+      font-weight: 700;
+      color: #2d3748;
+      background: rgba(78, 188, 202, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    
+    /* RESPONSIVE STYLES */
+    @media screen and (max-width: 600px) {
+      .container {
+        width: 100% !important;
+        margin: 0;
+        border-radius: 0;
+      }
+      .section {
+        padding: 40px 24px;
+      }
+      .nav-item {
+        padding: 4px;
+      }
+      .nav a {
+        font-size: 13px;
+        padding: 10px;
+      }
+      .feature-grid {
+        display: block;
+        border-spacing: 0;
+      }
+      .feature-item {
+        display: block;
+        width: auto;
+        margin-bottom: 16px;
+      }
+      .section h2 {
+        font-size: 28px;
+      }
+      .cta-btn {
+        display: block;
+        margin: 24px auto 0;
+        text-align: center;
+        max-width: 100%;
+        padding: 16px 24px;
+      }
+    }
+</style>
+<!--[if mso]>
+<style type="text/css">
+    table {border-collapse: collapse;}
+    .container {width: 600px !important;}
+    .nav {background-color: #f8f9fa !important;}
+    body, table, td, p, a, li, blockquote {font-family: Arial, sans-serif !important;}
+</style>
+<![endif]-->
+</head>
+<body>
+  <!-- Email preheader text (hidden) -->
+  <div style="display: none; max-height: 0px; overflow: hidden;">
+    Transform your fleet operations with CAFU's mobile fuel delivery service. Up to 12% fuel discounts and 9% VAT reclaim for your business.
+  </div>
+  
+  <div class="container">
+    <div class="header">
+      <img src="https://cafu.app/create_media/june_edms/new/logo.png" alt="CAFU Logo" style="height: 40px;">
+    </div>
+
+    <!-- Navigation -->
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#f8f9fa" class="nav">
+      <tr>
+        <td align="center" style="padding: 16px 0;">
+          <table cellpadding="0" cellspacing="0" border="0" style="width: 100%; max-width: 600px;">
+            <tr style="white-space: nowrap;">
+              <td width="20%" align="center" class="nav-item">
+                <a href="https://cafuapp.com/RCitF87Hlyb?c=649593840&token=GlVUAuBSBAUDAg==&try=1&$follow_redirect=true">FUEL</a>
+              </td>
+              <td width="20%" align="center" class="nav-item">
+                <a href="https://cafuapp.com/RCitF87Hlyb?c=649593840&token=GlVUAuBSBAUDAg==&try=1&$follow_redirect=true">CAR&nbsp;WASH</a>
+              </td>
+              <td width="20%" align="center" class="nav-item">
+                <a href="https://cafuapp.com/RCitF87Hlyb?c=649593840&token=GlVUAuBSBAUDAg==&try=1&$follow_redirect=true">TYRES</a>
+              </td>
+              <td width="20%" align="center" class="nav-item">
+                <a href="https://cafuapp.com/RCitF87Hlyb?c=649593840&token=GlVUAuBSBAUDAg==&try=1&$follow_redirect=true">BATTERY</a>
+              </td>
+              <td width="20%" align="center" class="nav-item">
+                <a href="https://cafuapp.com/RCitF87Hlyb?c=649593840&token=GlVUAuBSBAUDAg==&try=1&$follow_redirect=true">ENGINE&nbsp;OIL</a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Hero Image -->
+    <div class="hero">
+      <a href="https://6wpe.adj.st/cafu.mobile.com/business?adj_t=1nyjzviy&adj_fallback=https%3A%[…]ttps%3A%2F%2Fwww.cafu.com%2Fbusiness&adj_campaign=invoice_email">
+        <img src="https://cafu.app/create_media/image-25.jpeg" alt="CAFU Benefits" style="width: 100%; display: block;">
+      </a>
+    </div>
+    
+    <!-- Main Content -->
+    <div class="section">
+      <h2>Boost <span>Productivity</span> with CAFU</h2>
+      <p>Every minute spent refueling is a minute away from business.</p>
+      <p>Let CAFU keep your fleet fuelled on-site, saving up to <span class="highlight">8 hours per vehicle every month.</span></p>
+      <p>Maximize your returns with <span class="highlight">up to 12% in fuel discounts and 9% VAT reclaim</span>, optimizing your fleet's operational efficiency.</p>
+      
+      <!-- CTA Button with Outlook VML Fallback -->
+      <!--[if mso]>
+        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://6wpe.adj.st/cafu.mobile.com/home?adj_t=1ej4ooy0" style="height:48px;v-text-anchor:middle;width:300px;" arcsize="12%" stroke="f" fillcolor="#4EBCCA">
+          <w:anchorlock/>
+          <center style="color:#ffffff !important;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">
+            Get the App & Register Your Business
+          </center>
+        </v:roundrect>
+      <![endif]-->
+      <!--[if !mso]><!-->
+        <a href="https://6wpe.adj.st/cafu.mobile.com/home?adj_t=1ej4ooy0" class="cta-btn">
+          Get the App & Register Your Business
+        </a>
+      <!--<![endif]-->
+    </div>
+
+    <div class="section section-alt">
+      <h2>Quick refueling, <span>at your doorstep.</span></h2>
+      <p>Need fuel urgently? Our Priority delivery service reaches your fleet in <span class="strong">20 minutes</span> or less, any time, any day.</p>
+      <p class="mb-0">Maximum efficiency, zero interruptions.</p>
+    </div>
+
+    <div class="section">
+      <h2>Complete oversight. <span>No complications.</span></h2>
+      <p>Say goodbye to manual fuel tracking. With <span class="strong">automated invoicing, real-time usage data, and AI-optimised delivery schedules</span>, CAFU reduces administrative work by up to 30%, while providing total transparency of your fuel expenses.</p>
+    </div>
+
+    <div class="section section-alt">
+      <h2>Greater volume. <span>Greater savings.</span></h2>
+      <p>Loyalty brings meaningful benefits. CAFU's <span class="strong">business tier</span> program unlocks cashback, priority support, and preferential rates.</p>
+      <p class="mb-0">Scale your operations, amplify your savings.</p>
+    </div>
+
+    <div class="footer">
+      <div class="social-icons">
+        <a href="https://api.whatsapp.com/send?phone=+971586092238&text=Hi"><img src="https://cafu.app/create_media/B2B_emailer_SM6.png" alt="WhatsApp"></a>
+        <a href="https://www.facebook.com/MyCAFU"><img src="https://cafu.app/create_media/B2B_emailer_SM2.png" alt="Facebook"></a>
+        <a href="https://x.com/MyCafu"><img src="https://cafu.app/create_media/B2B_emailer_SM1.png" alt="Twitter"></a>
+        <a href="https://www.instagram.com/mycafu/"><img src="https://cafu.app/create_media/B2B_emailer_SM3.png" alt="Instagram"></a>
+        <a href="https://www.youtube.com/c/MYCAFU"><img src="https://cafu.app/create_media/B2B_emailer_SM5.png" alt="LinkedIn"></a>
+      </div>
+      <p>
+        © 2025 CAFU. All Rights Reserved | <a href="https://www.cafu.com/terms">Terms</a> | <a href="https://www.cafu.com/privacy">Privacy</a>
+      </p>
+      <p style="color: #718096; font-size: 12px; margin-top: 15px;">
+        If you no longer wish to receive these emails, you can <a href="https://cafu-help.github.io/unsubscribe/?email=${recipient_email}" style="color: #718096;">unsubscribe</a>.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
