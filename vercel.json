@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "api/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/unsubscribe", "dest": "/api/unsubscribe.js" },
+    { "src": "/api/test", "dest": "/api/test.js" },
+    { "src": "/unsubscribe", "dest": "/unsubscribe.html" }
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
+}

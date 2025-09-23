@@ -122,12 +122,16 @@
 
         <p>Once confirmed, you will no longer receive marketing emails from CAFU.</p>
         
-        <button class="button" onclick="handleUnsubscribe()">
+        <button class="button" onclick="handleUnsubscribe()" id="unsubscribeButton">
             Confirm Unsubscribe
         </button>
 
         <p class="success-message" id="successMessage">
             You have been successfully unsubscribed from CAFU marketing emails.
+        </p>
+
+        <p class="error-message" id="errorMessage" style="display: none; color: #e53e3e; margin-top: 20px; font-weight: 500;">
+            An error occurred. Please try again or contact support.
         </p>
     </div>
 
@@ -141,13 +145,66 @@
         // Display email on page load
         document.getElementById('emailDisplay').textContent = getEmailFromURL();
 
-        // Handle unsubscribe button click (demo)
-        function handleUnsubscribe() {
-            // Hide the button
-            document.querySelector('.button').style.display = 'none';
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
+        // Handle unsubscribe button click
+        async function handleUnsubscribe() {
+            const button = document.getElementById('unsubscribeButton');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const email = getEmailFromURL();
+
+            if (!email || email === 'Email not found') {
+                errorMessage.textContent = 'Invalid email address. Please check the URL and try again.';
+                errorMessage.style.display = 'block';
+                return;
+            }
+
+            // Reset messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            // Show loading state
+            button.disabled = true;
+            button.textContent = 'Processing...';
+
+            try {
+                const response = await fetch('/api/unsubscribe', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to unsubscribe');
+                }
+
+                // Show success state
+                button.style.display = 'none';
+                successMessage.style.display = 'block';
+            } catch (error) {
+                console.error('Unsubscribe error:', error);
+                // Show error state
+                button.disabled = false;
+                button.textContent = 'Try Again';
+                errorMessage.textContent = error.message || 'Failed to unsubscribe. Please try again.';
+                errorMessage.style.display = 'block';
+            }
         }
+
+        // Execute on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const email = getEmailFromURL();
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (!email || email === 'Email not found') {
+                errorMessage.textContent = 'Invalid email address. Please check the URL and try again.';
+                errorMessage.style.display = 'block';
+                document.getElementById('unsubscribeButton').disabled = true;
+            }
+        });
     </script>
 </body>
 </html>

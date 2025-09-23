@@ -1,0 +1,17 @@
+{
+  "name": "cafu-unsubscribe",
+  "version": "1.0.0",
+  "description": "CAFU Email Unsubscribe System",
+  "main": "api/unsubscribe.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "@vercel/node": "^2.15.6",
+    "@upstash/redis": "^1.22.0"
+  },
+  "devDependencies": {
+    "vercel": "^31.0.0"
+  }
+}
